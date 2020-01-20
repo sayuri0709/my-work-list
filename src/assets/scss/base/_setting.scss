@@ -1,0 +1,110 @@
+@charset "utf-8";
+
+//------------------------------------------------------------------------------
+//  
+//	変数
+//  
+//------------------------------------------------------------------------------
+
+// キーカラー
+$black: #212121;
+$gray: #333;
+
+
+// easing
+$easeInSine: cubic-bezier(0.47, 0, 0.745, 0.715);
+$easeOutSine: cubic-bezier(0.39, 0.575, 0.565, 1);
+$easeInOutSine: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+$easeInQuad: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+$easeOutQuad: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$easeInCubic: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$easeOutCubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+$easeInOutCubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+$easeInQuart: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+$easeOutQuart: cubic-bezier(0.165, 0.84, 0.44, 1);
+$easeInOutQuart: cubic-bezier(0.77, 0, 0.175, 1);
+$easeInQuint: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+$easeOutQuint: cubic-bezier(0.23, 1, 0.32, 1);
+$easeInOutQuint: cubic-bezier(0.86, 0, 0.07, 1);
+$easeInExpo: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+$easeOutExpo: cubic-bezier(0.19, 1, 0.22, 1);
+$easeInOutExpo: cubic-bezier(1, 0, 0, 1);
+$easeInCirc: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+$easeOutCirc: cubic-bezier(0.075, 0.82, 0.165, 1);
+$easeInOutCirc: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+$easeInBack: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+$easeOutBack: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+$easeInOutBack: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+//------------------------------------------------------------------------------
+//
+//	mixin
+//  
+//------------------------------------------------------------------------------
+
+// base easing
+@mixin transition {
+	transition: all .3s $easeOutCubic;
+	-webkit-transition: all .3s $easeOutCubic;
+}
+// border
+@mixin border($size: 1px) {
+  border: $size solid #888;
+}
+
+//font-size
+@function get_vw($size, $viewport:1920){
+  $rate: 100 / $viewport;
+  @return $rate * $size * 1vw;
+}
+@mixin fz_vw($font_size:26){
+  font-size: $font_size * 1px;
+  font-size: get_vw($font_size);
+}
+
+@mixin max-screen($breakpoint) {
+  @media print, screen and (max-width: $breakpoint) {
+    @content;
+  }
+}
+@mixin min-screen($breakpoint) {
+  @media print, screen and (min-width: $breakpoint) {
+    @content;
+  }
+}
+@mixin screen($breakpoint-min, $breakpoint-max) {
+  @media print, screen and (min-width: $breakpoint-min) and (max-width: $breakpoint-max) {
+    @content;
+  }
+}
+
+// IEハック
+@mixin hack($IE-ver: null) {
+  @if $IE-ver == 'lteIE8' { // IE8以下
+    @media \0screen\,screen\9 {
+      @content;
+    }
+  }
+  @else if $IE-ver == 'gteIE9' { // IE9以上
+    @media screen and (min-width:0\0) {
+      @content;
+    }
+  }
+  @else if $IE-ver == 'gteIE10' { // IE10以上
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+      @content;
+    }
+  }
+  @else if $IE-ver == 'gteIE11' { // IE11以上
+    @at-root _:-ms-fullscreen,:root & {
+      @content;
+    }
+  }
+  @else if $IE-ver == 'notIE8' { // IE8じゃないとき(他のブラウザも含める)
+    @media all and (min-width: 0) {
+      @content;
+    }
+  }
+}
+
+
