@@ -19,7 +19,7 @@ export default {
   },
   created() {
     //store内のデータ取得のactionを実行
-    this.$store.dispatch('commitDataSet')
+    //this.$store.dispatch('commitDataSet')
   },
   mounted() {
     this.windowLoad();

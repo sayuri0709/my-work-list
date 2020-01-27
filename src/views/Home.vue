@@ -1,13 +1,18 @@
 <template>
-  <div id="wrapper">
-    <h1>タスクリスト</h1>
-    <ul>
-      <li v-for="task in notCompliteTasks" :key="task.id">
-        <h2>{{task.workTtl}}</h2>
-        <p>{{task.memo}}</p>
-        <button @click="itemDone(task.id)">完了</button>
-      </li>
-    </ul>
+  <div id="wrapper" class="home">
+    <header>
+      <h1>To Do List</h1>
+      <button id="addTasks"></button>
+    </header>
+    <main>
+      <ul class="taskList">
+        <li v-for="task in notCompliteTasks" :key="task.id">
+          <a href="">
+            <h2>{{task.workTtl}}</h2>
+          </a>
+        </li>
+      </ul>
+    </main>
   </div>
 </template>
 <script>
@@ -25,7 +30,6 @@ export default {
   },
   methods: {
     itemDone: function(){
-      
     }
   }
 }

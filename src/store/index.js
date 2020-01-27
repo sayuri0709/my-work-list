@@ -1,13 +1,38 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
-import createPersistedState from "vuex-persistedstate";
+//import axios from 'axios'
+//import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    dataSet: {},
+    dataSet: [
+      {
+        id: 1,
+        workTtl: "タスクタイトル",
+        memo: "タスクのメモが入りますタスクのメモが入りますタスクのメモが入りますタスクのメモが入ります",
+        isDone: false
+      },
+      {
+        id: 2,
+        workTtl: "タスクタイトル",
+        memo: "タスクのメモが入りますタスクのメモが入りますタスクのメモが入りますタスクのメモが入ります",
+        isDone: false
+      },
+      {
+        id: 3,
+        workTtl: "タスクタイトル",
+        memo: "タスクのメモが入りますタスクのメモが入りますタスクのメモが入りますタスクのメモが入ります",
+        isDone: false
+      },
+      {
+        id: 4,
+        workTtl: "タスクタイトル",
+        memo: "タスクのメモが入りますタスクのメモが入りますタスクのメモが入りますタスクのメモが入ります",
+        isDone: false
+      }
+    ]
   },
   mutations: {
     mutateDataSet(state, payload) {
@@ -25,7 +50,7 @@ export default new Vuex.Store({
     }*/
   },
   actions: {
-    commitDataSet(store) {
+    /*commitDataSet(store) {
      return axios.get('/workList.json')
       .then(response => {
         store.commit('mutateDataSet', response.data)
@@ -34,7 +59,7 @@ export default new Vuex.Store({
        console.log(reason,'処理に失敗しました')
       })
     },
-    /*commitOldTimeSet(store,payload) {
+    commitOldTimeSet(store,payload) {
       store.commit('mutateOldTimeSet', payload.time);
     },
     commitRedirectTimerCount(store,payload) {
@@ -47,5 +72,5 @@ export default new Vuex.Store({
   getters: {
     getStateDataSet: (state) => state.dataSet
   },
-  plugins: [createPersistedState()]
+  //plugins: [createPersistedState()]
 })
