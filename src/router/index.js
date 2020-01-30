@@ -8,6 +8,17 @@ const routes = [
     path: '/',
     name: 'home',
     component: () => import(/* webpackChunkName: "Home" */ '../views/Home.vue')
+  },
+  {
+    path: '/item/:itemId',
+    name: 'item',
+    props: route => ({ itemId: Number(route.params.itemId) }),
+    component: () => import('../views/Item.vue')
+  },
+  {
+    path: '/complete',
+    name: 'complete',
+    component: () => import('../views/Complete.vue')
   }
 ]
 
