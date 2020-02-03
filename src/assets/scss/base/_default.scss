@@ -9,7 +9,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	vertical-align: baseline;
 	box-sizing: border-box;
 	background: transparent;
-	font-family: 'Noto Sans JP', sans-serif;
+	font-family: "HIragino Kaku Gothic Pro", Osaka, "Noto Sans JP", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
 }
 section, article, aside, hgroup, header, footer, main, nav, dialog, figure, figcaption {
 	display: block;
@@ -41,12 +41,15 @@ button {
 	appearance: none;
 	font-family: 'Noto Sans JP', sans-serif;
 }
-input[type="text"] {
+input,
+textarea {
 	padding: 0;
 	border: none;
 	border-radius: 0;
 	outline: none;
 	background: none;
+	box-shadow: none;
+	font-family: "HIragino Kaku Gothic Pro", Osaka, "Noto Sans JP", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS P Gothic", sans-serif;
 }
 textarea {
 	-webkit-appearance: none;

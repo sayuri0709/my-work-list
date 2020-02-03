@@ -146,9 +146,11 @@ header {
         border: 1px solid #bdb6b6;
         padding: 8px;
         box-sizing: border-box;
+        box-shadow: none;
       }
       textarea {
         height: 10em;
+        border-radius: 0;
       }
       &.error {
         color: #f00;
