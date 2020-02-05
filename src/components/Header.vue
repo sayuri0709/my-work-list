@@ -36,10 +36,6 @@ export default {
     return {
       modal: false,
       addData: {
-        id: Number,
-        workTtl: "",
-        memo: "",
-        isDone: false
       },
       warning: false
     }
@@ -64,11 +60,12 @@ export default {
         this.warning = true;
         return false;
       }
-
       //エラーが出ていた場合は削除
       this.warning = false;
       //タスクにidを追加
       this.addData.id = this.allTasks.length + 1;
+      //状態を未了に設定
+      this.addData.isDone = false;
       //モーダルを閉じる
       this.modal = false;
 
