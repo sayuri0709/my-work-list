@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-//import axios from 'axios'
+import axios from 'axios'
 import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex)
@@ -30,6 +30,15 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    commitDataSet(store) {
+      return axios.get('/comments')
+      .then(response => {
+        store.commit('mutateDataSet', response.data.documents)
+      })
+      .catch((reason) => {
+      console.log(reason,'処理に失敗しました')
+      })
+    },
     //タスクを追加する
     addTask({commit},payload) {
       commit('muteteAddTask', payload)

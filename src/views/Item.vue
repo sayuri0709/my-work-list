@@ -3,12 +3,12 @@
     <Header/>
     <main>
       <div class="inner">
-        <h2 :class="{complete : item()[0].isDone}">{{item()[0].workTtl}}</h2>
-        <p>{{item()[0].memo}}</p>
+        <h2 :class="{complete : item[0].isDone}">{{item[0].workTtl}}</h2>
+        <p>{{item[0].memo}}</p>
         
-        <button class="complete btnDefault" @click="compliteTask(item()[0].id)" v-if="!item()[0].isDone">完了</button>
+        <button class="complete btnDefault" @click="compliteTask(item[0].id)" v-if="!item[0].isDone">完了</button>
 
-        <button class="inComplete btnDefault" @click="inCompliteTask(item()[0].id)" v-else>未了に戻す</button>
+        <button class="inComplete btnDefault" @click="inCompliteTask(item[0].id)" v-else>未了に戻す</button>
 
         <p class="btnReturn" ><router-link :to="{name: 'home'}">TOPに戻る</router-link></p>
       </div>
@@ -30,15 +30,15 @@ export default {
   computed: {
     allTasks() {
       return this.$store.getters.getStateDataSet;
-    }
-  },
-  methods: {
+    },
     //ページ個別データ
-     item: function(){
+    item() {
       return this.allTasks.filter((el) =>{
         return el.id === this.itemId
       },this)
-    },
+    }
+  },
+  methods: {
     ...mapActions([
       "compliteTask",
       "inCompliteTask"
